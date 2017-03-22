@@ -22,7 +22,7 @@ public class ComboBoxSelection extends Application {
         Alert welcomeOutput = new Alert(Alert.AlertType.INFORMATION);
        /* errorOutput.initOwner(errorStage);*/
         TextField username = new TextField();
-        TextField password = new TextField();
+        PasswordField password = new PasswordField();
         Label output = new Label();
         String access = "";
 
@@ -37,12 +37,12 @@ public class ComboBoxSelection extends Application {
         pane.getChildren().addAll(new Label("Username"), username, new Label("ACCESS"), cbo);
         pane.getChildren().addAll(new Label("Password "), password);
 
-        Scene scene = new Scene(pane, 500, 200);
+        Scene scene = new Scene(pane, 430, 70);
         primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Button submit = new Button("Submit");
+        Button submit = new Button("Login");
         submit.setPrefWidth(200);
         pane.getChildren().add(submit);
         pane.getChildren().add(output);
