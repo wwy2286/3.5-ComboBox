@@ -25,10 +25,9 @@ public class ComboBoxSelection extends Application {
         PasswordField password = new PasswordField();
         Label output = new Label();
         String access = "";
+        ObservableList<String> accessArray = FXCollections.observableArrayList("Administrator", "Faculty", "Staff", "Student", "Guest");
+        ComboBox cbo = new ComboBox(accessArray);
 
-        final ComboBox<String> cbo = new ComboBox<>();
-        cbo.getItems().addAll("Administrator", "Faculty", "Staff", "Student", "Guest");
-        cbo.getSelectionModel().selectFirst();
 
         FlowPane pane = new FlowPane();
         pane.setPadding(new Insets(1, 1, 1, 1));
@@ -49,51 +48,51 @@ public class ComboBoxSelection extends Application {
 
 
         submit.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    String access = "";
+            @Override
+            public void handle(ActionEvent e) {
+                String access = "";
 
-                    switch (cbo.getValue()) {
-                        case "Administrator":
-                            access = "Administrator";
-                            break;
-                        case "Faculty":
-                            access = "Faculty";
-                            break;
-                        case "Staff":
-                            access = "Staff";
-                            break;
-                        case "Student":
-                            access = "Student";
-                            break;
-                        case "Guest":
-                            access = "Guest";
-                            break;
+                switch ((String)cbo.getValue()) {
+                    case "Administrator":
+                        access = "Administrator";
+                        break;
+                    case "Faculty":
+                        access = "Faculty";
+                        break;
+                    case "Staff":
+                        access = "Staff";
+                        break;
+                    case "Student":
+                        access = "Student";
+                        break;
+                    case "Guest":
+                        access = "Guest";
+                        break;
 
-                    }
-                    if (username.getText().equals("William") && password.getText().equals("password")) {
-                        output.setText("Welcome " + access);
-                        primaryStage.hide();
-                        welcomeOutput.setContentText("Welcome "+ access);
-                        welcomeOutput.showAndWait();
-                    } else {
-                        output.setText("Wrong Username or Password");
-                        count--;
+                }
+                if (username.getText().equals("William") && password.getText().equals("password")) {
+                    output.setText("Welcome " + access);
+                    primaryStage.hide();
+                    welcomeOutput.setContentText("Welcome "+ access);
+                    welcomeOutput.showAndWait();
+                } else {
+                    output.setText("Wrong Username or Password");
+                    count--;
 
-                    }
-                    if (count==0){
-                        primaryStage.hide();
-                        errorOutput.setContentText("Please Contact Administration");
-                        errorOutput.setHeaderText("Unable To Access Due to Multiple Attempts");
-                        errorOutput.showAndWait();
-
-
-                    }
+                }
+                if (count==0){
+                    primaryStage.hide();
+                    errorOutput.setContentText("Please Contact Administration");
+                    errorOutput.setHeaderText("Unable To Access Due to Multiple Attempts");
+                    errorOutput.showAndWait();
 
 
                 }
 
-            });
+
+            }
+
+        });
 
 
 
